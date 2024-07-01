@@ -24,7 +24,7 @@ class PreProcessData:
         # change all the text messages to a lower case
         text = text.lower()
         # remove numbers from text
-        # text = re.sub(r"\d+", "", text)
+        text = re.sub(r"\d+", "", text)
 
         # remove punctuation from text
         text = text.translate(str.maketrans("", "", string.punctuation))
