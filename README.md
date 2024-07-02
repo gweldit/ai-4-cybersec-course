@@ -4,7 +4,7 @@
    First, you need to clone the repository to your local machine. You can do this using the following command in your terminal:
 
    ```
-   git clone https://github.com/gweldit/csc-technical-course.git
+   git clone https://github.com/gweldit/ai-4-cybersec-course.git
    ```
 
 2. **Navigate to the Project Directory**
