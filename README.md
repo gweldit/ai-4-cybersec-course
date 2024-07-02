@@ -11,7 +11,7 @@
    Once the repository is cloned, navigate to the project directory using:
 
    ```
-   cd csc-technical-course
+   cd ai-4-cybersec-course
    ```
 
 3. **Install the Dependencies**
