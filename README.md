@@ -1,4 +1,6 @@
-# csc-technical-course
+# ai for cybersecurity technical course (tutorial)
+
+This tutorial assumes that you have already installed Python in your machine. If not, you can download Python from the [official website](https://www.python.org/downloads/)
 
 1. **Clone the Repository**
    First, you need to clone the repository to your local machine. You can do this using the following command in your terminal:
