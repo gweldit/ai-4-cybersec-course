@@ -1,32 +1,9 @@
-import re
-
 import joblib
 import streamlit as st
 import torch
 
 from models import Perceptron
-
-
-def preprocess_text(text):
-    # Remove all the special characters
-    processed_text = re.sub(r"\\W", " ", text)
-
-    # Remove all single characters
-    processed_text = re.sub(r"\\s+[a-zA-Z]\\s+", " ", processed_text)
-
-    # Remove single characters from the start
-    processed_text = re.sub(r"\\^[a-zA-Z]\\s+", " ", processed_text)
-
-    # Substituting multiple spaces with single space
-    processed_text = re.sub(r"\\s+", " ", processed_text, flags=re.I)
-
-    # Removing prefixed 'b'
-    processed_text = re.sub(r"^b\\s+", "", processed_text)
-
-    # Converting to Lowercase
-    processed_text = processed_text.lower()
-
-    return processed_text
+from preprocessing import PreprocessEmail as pr
 
 
 def load_model(input_size, output_size=1):
@@ -43,7 +20,7 @@ st.write("Phishing Email Detector")
 text = st.text_input("For One Email, Enter Your Text:")
 
 # Preprocess the text
-processed_text = preprocess_text(text)
+processed_text = pr.clean_email(text)
 
 # Display the preprocessed text
 st.write(processed_text)
@@ -71,7 +48,8 @@ normalized_X = torch.from_numpy(normalized_X).float()
 
 pred = model(normalized_X)
 # display the predicted class on streamlit app
-label = "malware" if torch.round(pred) == 1 else "normal"
+y_pred = torch.where(pred > 0.5, 1, 0)
+label = "malware" if y_pred.item() == 1 else "normal"
 st.write(
     f"Email is classified as = {label}, with probability = {pred.item() * 100:.3f}%"
 )
