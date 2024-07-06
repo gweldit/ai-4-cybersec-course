@@ -7,7 +7,7 @@ class Perceptron(nn.Module):
     https://www.javatpoint.com/single-layer-perceptron-in-tensorflow
     """
 
-    def __init__(self, input_size, output_size):
+    def __init__(self, input_size, output_size=1):
         super(Perceptron, self).__init__()
 
         self.fc = nn.Linear(input_size, output_size)
@@ -15,8 +15,6 @@ class Perceptron(nn.Module):
 
     def forward(self, inputs):
         output = self.fc(inputs)
-        # large large can lead to nan for sigmoid function. so, clip large value
-        # clampted_output = torch.clamp(output, min=-10, max=10)
         output = self.sigmoid(output)
 
         return output.squeeze()
