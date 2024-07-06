@@ -18,6 +18,7 @@ def load_model(input_size, output_size=1):
 
 st.write("Phishing Email Detector")
 # Create a text input
+text = ""
 text = st.text_input("For One Email, Enter Your Text:")
 
 # Preprocess the text
