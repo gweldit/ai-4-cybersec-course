@@ -9,7 +9,8 @@ from preprocessing import PreprocessEmail as pr
 def load_model(input_size, output_size=1):
     # create an architecture to load the saved weights
     model = Perceptron(input_size, output_size)
-    model.load_state_dict(torch.load("classifier.pt"))
+    # load the model or the phishing email classifier
+    model.load_state_dict(torch.load("model.pt"))
     # set model in eval mode
     model.eval()
     return model
